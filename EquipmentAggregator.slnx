@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="EquipmentAggregator.Api/EquipmentAggregator.Api.csproj" />
+  <Project Path="EquipmentAggregator.Tests/EquipmentAggregator.Tests.csproj" />
+</Solution>
