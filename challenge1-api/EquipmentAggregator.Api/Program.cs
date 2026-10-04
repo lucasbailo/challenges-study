@@ -1,3 +1,6 @@
+using EquipmentAggregator.Api.Services;
+using EquipmentAggregator.Api.Suppliers;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -5,6 +8,14 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
+
+builder.Services.AddMemoryCache();
+builder.Services.Configure<EquipmentOptions>(builder.Configuration.GetSection(EquipmentOptions.SectionName));
+
+// Todos registrados na mesma interface: o EquipmentService recebe IEnumerable<ISupplierClient>
+builder.Services.AddSingleton<ISupplierClient, EquipRentClient>();
+builder.Services.AddSingleton<ISupplierClient, HeavyMachClient>();
+builder.Services.AddScoped<EquipmentService>();
 
 var app = builder.Build();
 

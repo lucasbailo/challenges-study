@@ -1,6 +1,15 @@
 @EquipmentAggregator.Api_HostAddress = http://localhost:5100
 
-GET {{EquipmentAggregator.Api_HostAddress}}/weatherforecast/
+### Todos os equipamentos
+GET {{EquipmentAggregator.Api_HostAddress}}/api/equipment
+Accept: application/json
+
+### Disponíveis até $1000/dia
+GET {{EquipmentAggregator.Api_HostAddress}}/api/equipment?available=true&maxDailyRate=1000
+Accept: application/json
+
+### Validação: maxDailyRate negativo → 400
+GET {{EquipmentAggregator.Api_HostAddress}}/api/equipment?maxDailyRate=-1
 Accept: application/json
 
 ###
